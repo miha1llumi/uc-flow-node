@@ -13,7 +13,11 @@
 7. Запустите Ngrok htpp на порту 9000. Сделайте его скриншот и добавьте в README.md
 
 Ответ:
-Файлы в запущенном контейнере:
+Файлы рабочей директории в запущенном контейнере:
 ![Alt text](images/image.png)
+
+Все файлы в контейнере:
+![Alt text](images/all_files.png)
+
 Ngrok:
 ![Alt text](images/ngrok.png)
