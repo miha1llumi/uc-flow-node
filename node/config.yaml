@@ -1,4 +1,4 @@
-service_name: 'service'
+service_name: '4a8ee635-f06e-4444-b51b-200b8d94798d'
 
 http:
   url: http://0.0.0.0:9000
@@ -9,14 +9,15 @@ http:
       - Authorization
       - X-Total-Count
     access_control_allow_origin:
-      - https://go2.comagic.ru
+      - https://go2.uiscom.ru
 
 uc_flow_node:
   register_on_start: false
   execute_view_queue_size: 500
   execute_view_workers: 5
-  private_url: https://bc90-178-209-118-100.ngrok.io
-  public_url: https://bc90-178-209-118-100.ngrok.io
+  private_url: https://fdsaf-akemi.p.tnnl.in/
+  public_url: https://fdsaf-akemi.p.tnnl.in/
   uc_flow:
-    domain: https://uc-flow-v2-prod-api.uis.st
-    jwt_secret: 9109a79d-74f9-45bd-b369-5e7a885421e5
+    domain: https://uc-flow-v2-pp-api.comagic.ru
+    jwt_secret: fdsafsafasffdafsaf
+    

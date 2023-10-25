@@ -10,22 +10,40 @@ from uc_http_requester.requester import Request
 
 
 class NodeType(flow.NodeType):
-    id: str = '1'
+    id: str = '4a8ee635-f06e-4444-b51b-200b8d94798d'
     type: flow.NodeType.Type = flow.NodeType.Type.action
     name: str = 'Mihail'
-    displayName: str = 'Service'
+    displayName: str = 's'
     icon: str = '<svg><text x="8" y="50" font-size="50">🤖</text></svg>'
-    description: str = 'Service'
+    description: str = 'of course'
     properties: List[Property] = [
         Property(
-            displayName='Тестовое поле',
-            name='foo_field',
-            type=Property.Type.JSON,
+            displayName='first_number',
+            name='str_number',
+            type=Property.Type.STRING,
             placeholder='Foo placeholder',
             description='Foo description',
             required=True,
             default='Test data',
-        )
+        ),
+        Property(
+            displayName='second_number',
+            name='number',
+            type=Property.Type.NUMBER,
+            placeholder='Foo placeholder',
+            description='Foo description',
+            required=True,
+            default='Test data',
+        ),
+        Property(
+            displayName='return int/str',
+            name='multi_choice',
+            type=Property.Type.BOOLEAN,
+            placeholder='Foo placeholder',
+            description='Foo description',
+            required=True,
+            default=False,
+        ),
     ]
 
 
@@ -36,9 +54,14 @@ class InfoView(info.Info):
 
 class ExecuteView(execute.Execute):
     async def post(self, json: NodeRunContext) -> NodeRunContext:
+        figure_1 = int(json.node.data.properties['str_number'])
+        figure_2 = json.node.data.properties['number']
+        what_returns = str if json.node.data.properties['multi_choice'] else int
+
+        result = figure_1 + figure_2 if what_returns is int else str(figure_1 + figure_2)
         try:
             await json.save_result({
-                "result": json.node.data.properties['foo_field']
+                "result": result
             })
             json.state = RunState.complete
         except Exception as e:
